@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Main-Class: br.org.gamexis.plataforma.Motor
+Class-Path: js.jar slick.jar lwjgl.jar phys2d-060907.jar xml-apis.jar xercesImpl.jar NativeFmod.jar neodatis-odb.jar jmf.jar groovy-all-1.5.2.jar groovy-engine.jar
+
+
