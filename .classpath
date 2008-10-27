@@ -14,10 +14,9 @@
 	<classpathentry kind="lib" path="lib/jorbis-0.0.15.jar"/>
 	<classpathentry kind="lib" path="lib/lwjgl.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="ToupetyEngine/libs/slick/lib"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="ToupetyEngine/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/natives-linux.jar"/>
 	<classpathentry kind="lib" path="lib/pedigree.jar" sourcepath="libs/slick/tools/"/>
 	<classpathentry kind="lib" path="lib/scalar.jar"/>
 	<classpathentry kind="lib" path="lib/slick.jar" sourcepath="libs/slick/src"/>
@@ -34,7 +33,7 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/NativeFmod.jar" sourcepath="libs/NativeFMOD/NativeFmod Sdk/Src/NativeFmod-Src/Java/NativeFmod-Src.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="ToupetyEngine/libs/NativeFMOD/NativeFmod Sdk/lib"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="ToupetyEngine/lib"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/groovy-all-1.5.2.jar"/>
