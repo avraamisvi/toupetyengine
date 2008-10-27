@@ -9,7 +9,6 @@ import org.newdawn.slick.gui.GUIContext;
 
 import br.org.gamexis.plataforma.Motor;
 import br.org.gamexis.plataforma.motor.RecursosFactory;
-import br.org.gamexis.plataforma.script.ScriptException;
 
 public class Botao extends ToupetyComponente {
 

@@ -1,7 +1,5 @@
 package br.org.gamexis.plataforma.motor.configuracao;
 
-import groovy.sql.InOutParameter;
-
 import java.util.HashMap;
 
 import org.newdawn.slick.Input;

@@ -11,7 +11,6 @@ import org.newdawn.slick.util.InputAdapter;
 
 import br.org.gamexis.plataforma.cena.Desenho;
 import br.org.gamexis.plataforma.script.ScriptComportamento;
-import br.org.gamexis.plataforma.script.ScriptComportamentoGroovy;
 
 public abstract class ToupetyComponente extends InputAdapter implements Desenho {
 	

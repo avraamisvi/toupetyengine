@@ -12,7 +12,6 @@ import br.org.gamexis.plataforma.cena.Animacao;
 import br.org.gamexis.plataforma.cena.Animado;
 import br.org.gamexis.plataforma.cena.Ator;
 import br.org.gamexis.plataforma.cena.AtorFaceOrientacao;
-import br.org.gamexis.plataforma.cena.Cena;
 import br.org.gamexis.plataforma.cena.CenarioIF;
 import br.org.gamexis.plataforma.cena.Colisivel;
 import br.org.gamexis.plataforma.cena.Efeito;
@@ -21,7 +20,6 @@ import br.org.gamexis.plataforma.entidade.arma.ModoDisparo;
 import br.org.gamexis.plataforma.entidade.logestado.Municao;
 import br.org.gamexis.plataforma.eventos.Evento;
 import br.org.gamexis.plataforma.exception.GXException;
-import br.org.gamexis.plataforma.script.ScriptException;
 
 /**
  * Representa um projetil.

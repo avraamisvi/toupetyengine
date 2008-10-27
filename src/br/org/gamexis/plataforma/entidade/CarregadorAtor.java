@@ -20,7 +20,6 @@ import net.phys2d.raw.shapes.Box;
 import net.phys2d.raw.shapes.DynamicShape;
 import net.phys2d.raw.shapes.Polygon;
 
-import org.lwjgl.Sys;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.particles.ParticleIO;
@@ -35,7 +34,6 @@ import br.org.gamexis.plataforma.cena.Animado;
 import br.org.gamexis.plataforma.cena.Ator;
 import br.org.gamexis.plataforma.cena.EmissorParticulas;
 import br.org.gamexis.plataforma.cena.Tile;
-import br.org.gamexis.plataforma.cena.util.CarregadorMultImagem;
 import br.org.gamexis.plataforma.motor.RecursosFactory;
 
 public class CarregadorAtor {

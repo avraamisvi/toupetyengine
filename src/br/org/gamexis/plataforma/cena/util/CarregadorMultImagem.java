@@ -2,7 +2,6 @@ package br.org.gamexis.plataforma.cena.util;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.xml.parsers.FactoryConfigurationError;
@@ -10,7 +9,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
