@@ -1,21 +1,10 @@
 package br.org.gamexis.plataforma.script;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javax.script.Compilable;
-import javax.script.CompiledScript;
-import javax.script.Invocable;
-import javax.script.ScriptContext;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineFactory;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
-import javax.script.SimpleScriptContext;
 
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Function;
@@ -24,8 +13,6 @@ import org.mozilla.javascript.Scriptable;
 import org.mozilla.javascript.ScriptableObject;
 
 import br.org.gamexis.plataforma.Motor;
-import br.org.gamexis.plataforma.cena.NivelCena;
-import br.org.gamexis.plataforma.entidade.TipoEntidade;
 import br.org.gamexis.plataforma.motor.RecursosFactory;
 
 /**

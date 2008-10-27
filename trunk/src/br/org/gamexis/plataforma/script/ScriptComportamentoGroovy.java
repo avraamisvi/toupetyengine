@@ -1,12 +1,10 @@
 package br.org.gamexis.plataforma.script;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.script.Compilable;
 import javax.script.CompiledScript;
 import javax.script.Invocable;
 import javax.script.ScriptContext;
@@ -29,27 +27,27 @@ import br.org.gamexis.plataforma.motor.RecursosFactory;
  */
 public class ScriptComportamentoGroovy implements ScriptComportamento {
 	
-	//Indica se script esta com erro de codigo se sim, não executa.
+	// Indica se script esta com erro de codigo se sim, não executa.
 	private boolean comErro = false;
 	
 	private String script;
-    private ScriptEngine engine;
-    
-    private CompiledScript compilado;
-    private ScriptContext contexto;
-    
-    private static ScriptEngineFactory factory;
-    private static boolean primeiraVez = true;
-    static {
-    	factory = new ScriptEngineManager().getEngineByExtension("groovy").getFactory();
-    }
-
+	private ScriptEngine engine;
+	
+	private CompiledScript compilado;
+	private ScriptContext contexto;
+	
+	private static ScriptEngineFactory factory;
+	private static boolean primeiraVez = true;
+	static {
+		factory = new ScriptEngineManager().getEngineByExtension("groovy").getFactory();
+	}
+	
 	public ScriptComportamentoGroovy(String script) {
 		this.script = script;
 	}
-
+	
 	public ScriptComportamentoGroovy(ScriptComportamentoGroovy comportamento) {
-		//String script, CompiledScript compilado, ScriptEngine engine
+		// String script, CompiledScript compilado, ScriptEngine engine
 		this.script = comportamento.script;
 		contexto = new SimpleScriptContext();
 		
@@ -60,31 +58,33 @@ public class ScriptComportamentoGroovy implements ScriptComportamento {
 		
 	}
 	
-	public void execute(String nome, Object ...argumentos) throws Exception {
-		if(script == null || script.length() <= 0) {
+	public void execute(String nome, Object... argumentos) throws Exception {
+		if (script == null || script.length() <= 0) {
 			return;
 		}
 		
 		try {
-			if(!comErro) {
+			if (!comErro) {
 				executarMetodoGroovy(nome, argumentos);
 			}
 		} catch (ScriptException e) {
 			comErro = true;
-			Logger.getLogger(Motor.ARQUIVO_LOG).log(Level.SEVERE, "====#####ERRO SCRIPT: " + script +" #####======", e);
+			Logger.getLogger(Motor.ARQUIVO_LOG).log(Level.SEVERE,
+					"====#####ERRO SCRIPT: " + script + " #####======", e);
 			e.printStackTrace();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			comErro = true;
-			Logger.getLogger(Motor.ARQUIVO_LOG).log(Level.SEVERE, "====#####ERRO SCRIPT: " + script +" #####======", e);
-			e.printStackTrace();			
+			Logger.getLogger(Motor.ARQUIVO_LOG).log(Level.SEVERE,
+					"====#####ERRO SCRIPT: " + script + " #####======", e);
+			e.printStackTrace();
 			throw new ScriptException(e);
 		}
 	}
-
+	
 	public void compile() throws FileNotFoundException, ScriptException {
-		if(engine == null) {
+		if (engine == null) {
 			
-			engine = factory.getScriptEngine();//TODO COLOCAR COMO GLOBAL
+			engine = factory.getScriptEngine();// TODO COLOCAR COMO GLOBAL
 			engine.put("CENA_ATUAL", Motor.obterInstancia().getCenaAtual());
 			engine.put("MOTOR", Motor.obterInstancia());
 			engine.put("FABRICA", RecursosFactory.getInstancia());
@@ -95,15 +95,15 @@ public class ScriptComportamentoGroovy implements ScriptComportamento {
 		}
 	}
 	
-	private void executarMetodoGroovy(String metodo, Object ...argumentos) throws Exception {
+	private void executarMetodoGroovy(String metodo, Object... argumentos) throws Exception {
 		compile();
 		engine.put("CENA_ATUAL", Motor.obterInstancia().getCenaAtual());
 		
-		((Invocable)engine).invokeFunction(metodo, argumentos);		
+		((Invocable) engine).invokeFunction(metodo, argumentos);
 	}
 	
 	public void setParametro(String nome, Object valor) {
 		engine.put(nome, valor);
 	}
-
+	
 }

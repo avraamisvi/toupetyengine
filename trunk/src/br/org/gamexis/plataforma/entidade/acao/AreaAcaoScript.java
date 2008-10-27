@@ -5,7 +5,6 @@ import org.newdawn.slick.Color;
 import br.org.gamexis.plataforma.cena.Colisivel;
 import br.org.gamexis.plataforma.entidade.AreaAcao;
 import br.org.gamexis.plataforma.script.ScriptComportamento;
-import br.org.gamexis.plataforma.script.ScriptComportamentoGroovy;
 
 public class AreaAcaoScript extends AreaAcao {
 	private ScriptComportamento script;

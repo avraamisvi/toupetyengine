@@ -13,7 +13,6 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import br.org.gamexis.plataforma.cena.util.CarregadorMultImagem;
 import br.org.gamexis.plataforma.motor.RecursosFactory;
 
 public class CarregadorMosaicoAnimado {

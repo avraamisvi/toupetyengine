@@ -3,9 +3,6 @@ package br.org.gamexis.plataforma.cena.componentes.util;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
-
-import br.org.gamexis.plataforma.cena.Mosaico;
 
 /**
  * Caixa de um balao de texto baseado numa imagem, 

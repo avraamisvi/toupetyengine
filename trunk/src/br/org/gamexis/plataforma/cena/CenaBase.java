@@ -14,7 +14,6 @@ import br.org.gamexis.plataforma.Motor;
 import br.org.gamexis.plataforma.entidade.Entidade;
 import br.org.gamexis.plataforma.exception.GXException;
 import br.org.gamexis.plataforma.script.ScriptComportamento;
-import br.org.gamexis.plataforma.script.ScriptComportamentoGroovy;
 
 public abstract class CenaBase implements Cena {
 	

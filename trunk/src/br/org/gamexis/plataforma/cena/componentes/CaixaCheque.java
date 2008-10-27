@@ -9,7 +9,6 @@ import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.gui.GUIContext;
 
 import br.org.gamexis.plataforma.Motor;
-import br.org.gamexis.plataforma.script.ScriptException;
 
 /**
  * Baseado no codigo fonte de mouse over area do slick

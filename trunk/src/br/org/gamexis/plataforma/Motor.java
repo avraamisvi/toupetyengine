@@ -56,24 +56,24 @@ import br.org.gamexis.plataforma.motor.som.JMFUtil;
 import br.org.gamexis.plataforma.script.ScriptComportamento;
 
 public class Motor extends BasicGame {
-
+	
 	private static final String RECURSOS_IMAGENS_FADE = "recursos/imagens/fade.png";
 	private Font fonteFalas;
 	private int maximo_intervalo_texto = 10;
 	
 	// formato data base 01/08/2007
 	// N° Anos. N° de meses . N° versões geradas no mes
-	//versão 0.10.22b - introduzido o gerenciamento de recursos, 
-	//pra solucionar problemas relativos a otimização
-	//1.0 -> lua pra groovy
-	//nova metodologia para versionamento 10/07/2008
-	//M.N.C build B
-	//M - grandes mudanças mudança de paradigmas
-	//N - novas funcionalidades
-	//C - correçoes e pequenas ajustes
-	//B - builds
+	// versão 0.10.22b - introduzido o gerenciamento de recursos,
+	// pra solucionar problemas relativos a otimização
+	// 1.0 -> lua pra groovy
+	// nova metodologia para versionamento 10/07/2008
+	// M.N.C build B
+	// M - grandes mudanças mudança de paradigmas
+	// N - novas funcionalidades
+	// C - correçoes e pequenas ajustes
+	// B - builds
 	private String versao = "1.21.0 build 175";
-
+	
 	private static final int INTERVALO_TRANSICAO = 150;
 	private static final String ARQUIVO_SALVAR = "jogo.salvo";
 	private static final String ARQUIVO_CONFIGURACAO = "jogo.config";
@@ -94,30 +94,30 @@ public class Motor extends BasicGame {
 	
 	// Slot de jogo salvo - Zero por padrão
 	private int slotSalvo = 0;
-
+	
 	/**
 	 * Jogavel instanciado e comum a todas as cenas.
 	 */
 	private EntidadeJogavel jogavelCarregado;
-
+	
 	/**
 	 * Painel de estado instanciado e comum a todas as cenas.
 	 */
 	private PainelEstado painelEstado;
-
+	
 	/**
 	 * Variaveis globais
 	 */
 	HashMap<String, Object> variaveis = new HashMap<String, Object>();
-
+	
 	/**
 	 * Controle do salvo
 	 */
 	ScriptComportamento scriptMotor;
-
+	
 	long tInicial;
 	long fps;
-
+	
 	private Cena cenaAtual;
 	private ConfiguracaoInicial inicial;
 	private ConfiguracaoGeral configGeral;
@@ -127,40 +127,40 @@ public class Motor extends BasicGame {
 	public static Motor obterInstancia() {
 		if (instancia == null)
 			instancia = new Motor();
-
+		
 		return instancia;
 	}
-
+	
 	private Motor() {
 		super("GAMEXIS");
 	}
-
+	
 	public void setAppGameContainer(AppGameContainer appGameContainer) {
 		this.appGameContainer = appGameContainer;
 	}
-
+	
 	public AppGameContainer getAppGameContainer() {
 		return appGameContainer;
 	}
-
+	
 	public Cena getCenaAtual() {
 		return cenaAtual;
 	}
-
+	
 	public static void main(String[] args) {
 		try {
 			Motor mot = obterInstancia();
 			AppGameContainer app = new AppGameContainer(mot);
-			//app.setClearEachFrame(false);
+			// app.setClearEachFrame(false);
 			app.setShowFPS(false);
-
+			
 			mot.setAppGameContainer(app);
 			app.start();
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}
-
+	
 	@Override
 	public void init(GameContainer container) throws SlickException {
 		inicial = new CarregadorConfiguracaoInicial().carregarConfiguracao();
@@ -174,28 +174,27 @@ public class Motor extends BasicGame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
 		container.setTargetFrameRate(inicial.getFramerate());
-		//container.setMaximumLogicUpdateInterval(inicial.getLogicaMaxima());
-		//container.setMinimumLogicUpdateInterval(inicial.getLogicaMinima());
-		//container.setTargetFrameRate(100);
-//		container.setVSync(true); sem isso fica melhor
+		// container.setMaximumLogicUpdateInterval(inicial.getLogicaMaxima());
+		// container.setMinimumLogicUpdateInterval(inicial.getLogicaMinima());
+		// container.setTargetFrameRate(100);
+		// container.setVSync(true); sem isso fica melhor
 		container.setIcon(inicial.getIcone());
-
+		
 		modoDebug = inicial.isDebug();
 		appGameContainer.setTitle(inicial.getTitulo() + " VERSAO: " + versao);
-
+		
 		configGeral = carregarConfiguracao();
 		aplicarConfiguracaoGeral();
 		EntradaPerifericos.setInput(container.getInput());
 		EntradaPerifericos.setControle(configGeral.getControles());
 		
 		container.getGraphics().setBackground(new Color(0.5f, 0.5f, 0.5f));
-		cenaAtual = new CarregadorCenario().carregarCena(inicial
-				.getCenaInicial());
+		cenaAtual = new CarregadorCenario().carregarCena(inicial.getCenaInicial());
 		
-		transicao = new Transicao(configGeral.getResolucao().getComprimento(), 
-				configGeral.getResolucao().getAltura(), INTERVALO_TRANSICAO);
+		transicao = new Transicao(configGeral.getResolucao().getComprimento(), configGeral
+				.getResolucao().getAltura(), INTERVALO_TRANSICAO);
 		transicao.setImagemBase(new Image(RECURSOS_IMAGENS_FADE), 100, 100, 4);
 		transicao.iniciarVoltando();
 		
@@ -205,11 +204,12 @@ public class Motor extends BasicGame {
 		console.desativar();
 		console.setVisivel(false);
 		
-		scriptMotor = RecursosFactory.getInstancia().getComportamento("recursos/motor.groovy", false);
+		scriptMotor = RecursosFactory.getInstancia().getComportamento("recursos/motor.groovy",
+				false);
 	}
-
-	public void exibirConsole() {		
-		if(!console.isAtivado()) {
+	
+	public void exibirConsole() {
+		if (!console.isAtivado()) {
 			console.ativar();
 			console.setVisivel(true);
 			console.definirFuncoes();
@@ -226,35 +226,34 @@ public class Motor extends BasicGame {
 	}
 	
 	@Override
-	public void update(GameContainer container, int delta)
-			throws SlickException {
+	public void update(GameContainer container, int delta) throws SlickException {
 		
 		long t = System.currentTimeMillis();
 		
 		if (entidadeCursor != null) {
 			entidadeCursor.getAtor().atualizar(delta);
 		}
-
+		
 		if (flagCarregarProximaCena) {
 			flagCarregarProximaCena = false;
-			if(cenaAtual != null) {
+			if (cenaAtual != null) {
 				cenaAtual.finalizar();
 				cenaAtual = null;
 			}
-				
+			
 			cenaAtual = new CarregadorCenario().carregarCena(proximaCena);
 		}
 		
-		if(container.getInput().isKeyPressed(Input.KEY_F3)) {//SHOW FPS
+		if (container.getInput().isKeyPressed(Input.KEY_F3)) {// SHOW FPS
 			container.setShowFPS(!container.isShowingFPS());
-		} else	if (container.getInput().isKeyPressed(Input.KEY_F12)) {
-
+		} else if (container.getInput().isKeyPressed(Input.KEY_F12)) {
+			
 			if (modoDesenvolvedor) {
 				modoDebug = !modoDebug;
 				container.setShowFPS(!container.isShowingFPS());
 				
-				if(!modoDebug) {
-					if(cursorCapturadoDebug) {
+				if (!modoDebug) {
+					if (cursorCapturadoDebug) {
 						capturarCursor();
 					}
 				} else {
@@ -262,46 +261,47 @@ public class Motor extends BasicGame {
 					liberarCursor();
 				}
 			}
-
+			
 		} else if (container.getInput().isKeyPressed(Input.KEY_F11)) {
-
+			
 			configGeral.getResolucao().setTelaCheia(!configGeral.getResolucao().isTelaCheia());
-
+			
 			Color corFundo = container.getGraphics().getBackground();
 			appGameContainer.setFullscreen(configGeral.getResolucao().isTelaCheia());
 			container.getGraphics().setBackground(corFundo);
-
+			
 		} else if (container.getInput().isKeyPressed(Input.KEY_F1)) {
 			
 			exibirConsole();
-		} else if(container.getInput().isKeyPressed(Input.KEY_F2)) {
-			if(modoDesenvolvedor)
+		} else if (container.getInput().isKeyPressed(Input.KEY_F2)) {
+			if (modoDesenvolvedor)
 				liberarCursorDebug();
 		} else if (container.getInput().isKeyPressed(Input.KEY_F8)) {
 			if (modoDesenvolvedor) {
-				if(!exibirLogEstadoJogavel)
+				if (!exibirLogEstadoJogavel)
 					exibirLogEstadoJogavel();
 				else
 					esconderLogEstadoJogavel();
 			}
-		} 
+		}
 		
-		if(transicao != null) {
-			if(transicao.terminado()) {
+		if (transicao != null) {
+			if (transicao.terminado()) {
 				atualizarCenaAtual(container, delta);
 			} else {
 				if (!cenaAtual.estaIniciada()) {
 					atualizarCenaAtual(container, delta);
 				}
 			}
-
+			
 		} else {
 			atualizarCenaAtual(container, delta);
 		}
 		
-//		System.out.println("TOTAL UPDATE:" + (System.currentTimeMillis() - t));
+		// System.out.println("TOTAL UPDATE:" + (System.currentTimeMillis() -
+		// t));
 	}
-
+	
 	/**
 	 * Atualiza a cena atual.
 	 * 
@@ -313,9 +313,9 @@ public class Motor extends BasicGame {
 		try {
 			if (!cenaAtual.estaIniciada())
 				cenaAtual.iniciar(container);
-
+			
 			cenaAtual.atualizar(container, delta);
-
+			
 		} catch (GXException e) {
 			Logger.getLogger("toupety_log").log(Level.SEVERE, "erro:", e);
 			e.printStackTrace();
@@ -324,7 +324,7 @@ public class Motor extends BasicGame {
 	
 	public void tratarExcecao(Exception cause) {
 		cause.printStackTrace();
-		Logger.getLogger(Motor.ARQUIVO_LOG).log(Level.SEVERE, "erro motor:", cause);		
+		Logger.getLogger(Motor.ARQUIVO_LOG).log(Level.SEVERE, "erro motor:", cause);
 	}
 	
 	public void mudarCena(String cenaRef) {
@@ -336,26 +336,26 @@ public class Motor extends BasicGame {
 			tratarExcecao(e);
 		}
 	}
-
+	
 	@Override
-	public void render(GameContainer container, Graphics g)
-			throws SlickException {
+	public void render(GameContainer container, Graphics g) throws SlickException {
 		long t = System.currentTimeMillis();
-		//g.setAntiAlias(true);
+		// g.setAntiAlias(true);
 		cenaAtual.desenhar(container, g);
 		desenharConsole(g);
 		desenharEntidadeCursor(g);
-
+		
 		if (modoDebug) {
 			g.drawString("MODO DEBUG", container.getWidth() / 2, 20);
 			g.drawString("VERSAO " + versao, container.getWidth() / 2,
 					container.getScreenHeight() - 50);
 			
-			Ator atorJog = (Ator)getJogavelCarregado().getAtor();
+			Ator atorJog = (Ator) getJogavelCarregado().getAtor();
 			
 			Color old = g.getColor();
 			g.setColor(Color.cyan);
-			g.drawString("JOGAVEL(X,Y)" + atorJog.getX() + ", " + atorJog.getY() , container.getWidth() / 2,  100);
+			g.drawString("JOGAVEL(X,Y)" + atorJog.getX() + ", " + atorJog.getY(), container
+					.getWidth() / 2, 100);
 			g.setColor(old);
 		}
 		
@@ -374,35 +374,36 @@ public class Motor extends BasicGame {
 			}
 		}
 		
-		if(exibirLogEstadoJogavel) {
+		if (exibirLogEstadoJogavel) {
 			desenharLogEstadoJogavel(g);
 		}
 		
-//		System.out.println("TOTAL RENDER:" + (System.currentTimeMillis() - t));
+		// System.out.println("TOTAL RENDER:" + (System.currentTimeMillis() -
+		// t));
 	}
-
+	
 	private void desenharEntidadeCursor(Graphics g) {
 		if (entidadeCursor != null) {
 			g.resetTransform();
 			((Ator) entidadeCursor.getAtor()).desenhar(g);
 		}
 	}
-
+	
 	public Integer getSlotSalvo() {
 		return slotSalvo;
 	}
-
+	
 	public void setSlotSalvo(int slotSalvo) {
 		this.slotSalvo = slotSalvo;
 	}
-
+	
 	/**
 	 * Salva o jogo com a data atual como descrição.
 	 */
 	public void salvarJogo() {
 		salvarJogo(getSlotSalvo(), getCenaAtual().getNome());
 	}
-
+	
 	/**
 	 * Salva um jogo pela posição, chama o metodo do script pra fazer o
 	 * salvamento
@@ -415,43 +416,41 @@ public class Motor extends BasicGame {
 			try {
 				Salvavel salvo = new Salvavel();
 				salvo.setIdentificador(posicao);
-
+				
 				ODB odb = ODBFactory.open(ARQUIVO_SALVAR);
-				IQuery query = new CriteriaQuery(Salvavel.class, Where.equal(
-						"identificador", salvo.getIdentificador()));
-
+				IQuery query = new CriteriaQuery(Salvavel.class, Where.equal("identificador", salvo
+						.getIdentificador()));
+				
 				Objects objs = odb.getObjects(query);
 				if (objs.hasNext())
 					salvo = (Salvavel) objs.getFirst();
-
+				
 				if (salvo == null) {
 					salvo = new Salvavel();
 					salvo.setIdentificador(posicao);
 				}
-
+				
 				salvo.setCena(getCenaAtual().getNome());
 				salvo.setVariaveis(variaveis);
-				float x = getJogavelCarregado().getAtor().getCorpo()
-						.getPosition().getX();
-				float y = getJogavelCarregado().getAtor().getCorpo()
-						.getPosition().getY();
+				float x = getJogavelCarregado().getAtor().getCorpo().getPosition().getX();
+				float y = getJogavelCarregado().getAtor().getCorpo().getPosition().getY();
 				salvo.setJogavelX(x);
 				salvo.setJogavelY(y);
 				salvo.setData(new Date());
 				salvo.setDescricao(descricao);
-
+				
 				// odb.close();
 				scriptMotor.execute("aoSalvar", new Object[] { this, salvo });
 				// salvar(salvo);
 				odb.store(salvo);
 				odb.close();
-
-			} catch (Exception e) {				
+				
+			} catch (Exception e) {
 				tratarExcecao(e);
 			}
 		}
 	}
-
+	
 	/**
 	 * Carrega um jogo pela posição, chama o metodo do script pra fazer o
 	 * carregaento
@@ -462,52 +461,50 @@ public class Motor extends BasicGame {
 		if (scriptMotor != null) {
 			try {
 				Salvavel salvo = carregar(posicao);
-				//DEPRECATED VERSÕES ANTIGAS
+				// DEPRECATED VERSÕES ANTIGAS
 				setVariaveis(salvo.getVariaveis());
-				setVariavel("posicaoJogavelX", String.valueOf(salvo
-						.getJogavelX().floatValue()));
-				setVariavel("posicaoJogavelY", String.valueOf(salvo
-						.getJogavelY().floatValue()));
-				//DEPRECATED
+				setVariavel("posicaoJogavelX", String.valueOf(salvo.getJogavelX().floatValue()));
+				setVariavel("posicaoJogavelY", String.valueOf(salvo.getJogavelY().floatValue()));
+				// DEPRECATED
 				
 				float xj = salvo.getJogavelX().floatValue();
 				float yj = salvo.getJogavelY().floatValue();
 				putEntrada(xj, yj);
 				
 				mudarCena(salvo.getCena());
-
+				
 				scriptMotor.execute("aoCarregar", new Object[] { this, salvo });
 			} catch (Exception e) {
 				tratarExcecao(e);
 			}
 		}
 	}
-
+	
 	public void salvarConfiguracao(ConfiguracaoGeral config) {
 		try {
 			ODB odb = ODBFactory.open(ARQUIVO_CONFIGURACAO);
-
+			
 			IQuery query = new CriteriaQuery(ConfiguracaoGeral.class);
 			Objects objs = odb.getObjects(query);
-
+			
 			ConfiguracaoGeral configTemp = null;
 			if (objs.hasNext()) {
 				configTemp = (ConfiguracaoGeral) objs.getFirst();
 				
-				//config.getControles().padrao();
+				// config.getControles().padrao();
 				configTemp.setControles(config.getControles());
 				configTemp.setResolucao(config.getResolucao());
 				configTemp.setSom(config.getSom());
 				config = configTemp;
 			}
-
+			
 			odb.store(config);
 			odb.close();
 		} catch (Exception e) {
 			tratarExcecao(e);
 		}
 	}
-
+	
 	public ConfiguracaoGeral carregarConfiguracao() {
 		ConfiguracaoGeral conf = null;
 		try {
@@ -519,50 +516,48 @@ public class Motor extends BasicGame {
 		} catch (Exception e) {
 			tratarExcecao(e);
 		}
-
-//		conf.setControles(new Controles());
+		
+		// conf.setControles(new Controles());
 		return conf;
 	}
-
+	
 	public ConfiguracaoInicial getConfiguracaoInicial() {
 		return inicial;
 	}
-
+	
 	public void aplicarConfiguracaoGeral() {
 		aplicarConfiguracaoControles();
 		aplicarConfiguracaoVideo();
 		aplicarConfiguracaoSom();
 	}
-
+	
 	public void aplicarConfiguracaoControles() {
 	}
-
+	
 	public void aplicarConfiguracaoVideo() {
 		try {
-			//appGameContainer.setVSync(true);
-			appGameContainer.setDisplayMode(configGeral.getResolucao()
-					.getComprimento(), configGeral.getResolucao().getAltura(),
-					configGeral.getResolucao().isTelaCheia());
+			// appGameContainer.setVSync(true);
+			appGameContainer.setDisplayMode(configGeral.getResolucao().getComprimento(),
+					configGeral.getResolucao().getAltura(), configGeral.getResolucao()
+							.isTelaCheia());
 		} catch (SlickException e) {
 			tratarExcecao(e);
 		}
 	}
-
+	
 	public void aplicarConfiguracaoSom() {
-		FMODUtil.obterInstancia().setMusicaHabilitada(
-				configGeral.getSom().getAlturaMusica() > 0);
-		FMODUtil.obterInstancia().setEfeitosHabilitado(
-				configGeral.getSom().getAlturaEfeitos() > 0);
+		FMODUtil.obterInstancia().setMusicaHabilitada(configGeral.getSom().getAlturaMusica() > 0);
+		FMODUtil.obterInstancia().setEfeitosHabilitado(configGeral.getSom().getAlturaEfeitos() > 0);
 	}
-
+	
 	public void reTocarMusica() {
-		JMFUtil.getInstancia().tocarMesmaMusica(true);		
+		JMFUtil.getInstancia().tocarMesmaMusica(true);
 	}
-
+	
 	public void pararMusica() {
 		JMFUtil.getInstancia().pararMusica();
 	}
-
+	
 	public void tocarMusica(String musica) {
 		try {
 			JMFUtil.getInstancia().tocarMusica(musica, true);
@@ -570,7 +565,7 @@ public class Motor extends BasicGame {
 			tratarExcecao(e);
 		}
 	}
-
+	
 	public boolean isTocandoMusica() {
 		try {
 			return JMFUtil.getInstancia().isTocandoMusica();
@@ -591,55 +586,54 @@ public class Motor extends BasicGame {
 		return null;
 	}
 	
-	public br.org.gamexis.plataforma.motor.som.Som tocarEfeitoSom(String som, float x, float y, float z) {
+	public br.org.gamexis.plataforma.motor.som.Som tocarEfeitoSom(String som, float x, float y,
+			float z) {
 		try {
 			Ator atorJog = ((Ator) jogavelCarregado.getAtor());
-			if (Math.abs(atorJog.getX() - x) <= configGeral.getResolucao()
-					.getComprimento()) {
-				if (Math.abs(atorJog.getY() - y) <= configGeral.getResolucao()
-						.getAltura()) {
-					if(configGeral.getSom().getAlturaEfeitos() > 0)
+			if (Math.abs(atorJog.getX() - x) <= configGeral.getResolucao().getComprimento()) {
+				if (Math.abs(atorJog.getY() - y) <= configGeral.getResolucao().getAltura()) {
+					if (configGeral.getSom().getAlturaEfeitos() > 0)
 						return JMFUtil.getInstancia().tocarSom(som);
 				}
 			}
-
+			
 		} catch (Exception e) {
 			tratarExcecao(e);
 		}
 		
 		return null;
 	}
-
+	
 	public br.org.gamexis.plataforma.motor.som.Som tocarEfeitoSom(String som) {
 		try {
-			if(configGeral.getSom().getAlturaEfeitos() > 0)
+			if (configGeral.getSom().getAlturaEfeitos() > 0)
 				return JMFUtil.getInstancia().tocarSom(som);
 		} catch (Exception e) {
 			tratarExcecao(e);
 		}
-
+		
 		return null;
 	}
-
+	
 	@Deprecated
 	public void gerarConfiguracaoPadrao() {
 		ConfiguracaoGeral geral = new ConfiguracaoGeral();
-
+		
 		Video video = new Video();
 		video.setAltura(800);
 		video.setComprimento(600);
 		video.setTelaCheia(false);
-
+		
 		Som som = new Som();
 		som.setAlturaEfeitos(1);
 		som.setAlturaMusica(1);
-
+		
 		geral.setResolucao(video);
 		geral.setSom(som);
 		
 		salvarConfiguracao(geral);
 	}
-
+	
 	/**
 	 * carrega um salvo pelo id
 	 * 
@@ -650,21 +644,20 @@ public class Motor extends BasicGame {
 		Salvavel salvo = null;
 		try {
 			ODB odb = ODBFactory.open(ARQUIVO_SALVAR);
-			IQuery query = new CriteriaQuery(Salvavel.class, Where.equal(
-					"identificador", id));
+			IQuery query = new CriteriaQuery(Salvavel.class, Where.equal("identificador", id));
 			Objects salvos = odb.getObjects(query);
-
+			
 			if (!salvos.isEmpty())
 				salvo = (Salvavel) salvos.getFirst();
-
+			
 			odb.close();
 		} catch (Exception e) {
 			tratarExcecao(e);
 		}
-
+		
 		return salvo;
 	}
-
+	
 	/**
 	 * carrega uum conjunto de variaveis globais, substituindo as anteriores
 	 * 
@@ -673,7 +666,7 @@ public class Motor extends BasicGame {
 	public void setVariaveis(HashMap<String, Object> variaveis) {
 		this.variaveis = variaveis;
 	}
-
+	
 	/**
 	 * Seta o valor de uma variavel
 	 * 
@@ -683,7 +676,7 @@ public class Motor extends BasicGame {
 	public void setVariavel(String nome, Object valor) {
 		variaveis.put(nome, valor);
 	}
-
+	
 	/**
 	 * Obtem o valor de uma variavel
 	 * 
@@ -702,48 +695,48 @@ public class Motor extends BasicGame {
 	public void removerVariavel(String nome) {
 		variaveis.remove(nome);
 	}
-
+	
 	public void fechar() {
 		System.exit(0);
 	}
-
+	
 	public boolean isModoDebug() {
 		return modoDebug;
 	}
-
+	
 	public void setJogavelCarregado(EntidadeJogavel jogavelCarregado) {
 		this.jogavelCarregado = jogavelCarregado;
 	}
-
+	
 	public EntidadeJogavel getJogavelCarregado() {
 		return jogavelCarregado;
 	}
-
+	
 	public String getVersao() {
 		return versao;
 	}
-
+	
 	public PainelEstado getPainelEstado() {
 		return painelEstado;
 	}
-
+	
 	public void setPainelEstado(PainelEstado painelEstado) {
 		this.painelEstado = painelEstado;
 	}
-
-	public boolean cursorCapturado() {			
+	
+	public boolean cursorCapturado() {
 		return cursorCapturado;
 	}
 	
 	public void capturarCursor() {
 		this.appGameContainer.setMouseGrabbed(true);
-
+		
 		if (entidadeCursor != null)
 			((Ator) entidadeCursor.getAtor()).setVisivel(false);
 		
 		cursorCapturado = true;
 	}
-
+	
 	public void liberarCursor() {
 		cursorCapturado = false;
 		
@@ -751,47 +744,45 @@ public class Motor extends BasicGame {
 			this.appGameContainer.setMouseGrabbed(false);
 			return;
 		}
-
+		
 		((Ator) entidadeCursor.getAtor()).setVisivel(true);
 		this.appGameContainer.setMouseGrabbed(true);
 	}
-
+	
 	public void liberarCursorDebug() {
 		this.appGameContainer.setMouseGrabbed(false);
 	}
 	
 	public void configureCursor(Cursor cursor) throws SlickException {
-
+		
 		if (cursor.referencia != null) {
-			this.appGameContainer.setMouseCursor(
-					RecursosFactory.diretorioImagens + cursor.referencia, 0, 0);
+			this.appGameContainer.setMouseCursor(RecursosFactory.diretorioImagens
+					+ cursor.referencia, 0, 0);
 		} else if (cursor.entidade != null) {
-			this.setEntidadeCursor(new CarregadorEntidade()
-					.carregarEntidade(cursor.entidade));
+			this.setEntidadeCursor(new CarregadorEntidade().carregarEntidade(cursor.entidade));
 		}
 	}
-
+	
 	/**
 	 * Zera as variaveis globais
 	 */
 	public void limparVariaveis() {
 		variaveis = new HashMap<String, Object>();
 	}
-
+	
 	public void setEntidadeCursor(Entidade entidadeCursor) {
 		this.entidadeCursor = entidadeCursor;
 		this.appGameContainer.setMouseGrabbed(true);
 	}
-
+	
 	public Entidade getEntidadeCursor() {
 		return entidadeCursor;
 	}
 	
-		
 	public boolean tipoProjetil(Entidade entidade) {
 		return (entidade.getTipo() == TipoEntidade.projetil);
 	}
-
+	
 	public boolean tipoJogavel(Entidade entidade) {
 		return (entidade.getTipo() == TipoEntidade.jogavel);
 	}
@@ -802,12 +793,12 @@ public class Motor extends BasicGame {
 	
 	public boolean tipoNeutro(Entidade entidade) {
 		return (entidade.getTipo() == TipoEntidade.neutro);
-	}	
+	}
 	
 	public boolean tipoEscudo(Entidade entidade) {
 		return (entidade.getTipo() == TipoEntidade.escudo);
 	}
-
+	
 	public boolean tipoPlataforma(Entidade entidade) {
 		return (entidade.getTipo() == TipoEntidade.plataforma);
 	}
@@ -819,24 +810,24 @@ public class Motor extends BasicGame {
 	public void exibirDanoPadrao(Entidade fonte, int dano, float xd, float yd) {
 		Efeito anima;
 		try {
-			anima = RecursosFactory.getInstancia().
-			getEfeitoAnimacao((Desenho)fonte.getAtor(), "perde_"+ dano +"_anim.png", 32, 64, 0, 0, 8, false, 100);
+			anima = RecursosFactory.getInstancia().getEfeitoAnimacao((Desenho) fonte.getAtor(),
+					"perde_" + dano + "_anim.png", 32, 64, 0, 0, 8, false, 100);
 			anima.setDeslocY(yd);
 			anima.setDeslocX(xd);
-			((Cenario)getCenaAtual()).adicionarAnimacao(anima, NivelCena.frente);		
+			((Cenario) getCenaAtual()).adicionarAnimacao(anima, NivelCena.frente);
 		} catch (Exception e) {
 			tratarExcecao(e);
 			e.printStackTrace();
 		}
-	}	
+	}
 	
 	public void exibirGanhoPadrao(Entidade fonte, int ganho) {
 		Efeito anima;
 		try {
-			anima = RecursosFactory.getInstancia().
-			getEfeitoAnimacao((Desenho)fonte.getAtor(), "ganha_"+ ganho +"_anim.png", 32, 64, 0, 0, 8, false, 100);
+			anima = RecursosFactory.getInstancia().getEfeitoAnimacao((Desenho) fonte.getAtor(),
+					"ganha_" + ganho + "_anim.png", 32, 64, 0, 0, 8, false, 100);
 			anima.setDeslocY(30);
-			((Cenario)getCenaAtual()).adicionarAnimacao(anima, NivelCena.frente);
+			((Cenario) getCenaAtual()).adicionarAnimacao(anima, NivelCena.frente);
 		} catch (Exception e) {
 			tratarExcecao(e);
 			e.printStackTrace();
@@ -846,51 +837,52 @@ public class Motor extends BasicGame {
 	public void exibirDanoMaximo(Entidade fonte) {
 		Efeito anima;
 		try {
-			anima = RecursosFactory.getInstancia().
-			getEfeitoAnimacao((Desenho)fonte.getAtor(), "perde_maximo_anim.png", 64, 64, 0, 0, 8, false, 100);
+			anima = RecursosFactory.getInstancia().getEfeitoAnimacao((Desenho) fonte.getAtor(),
+					"perde_maximo_anim.png", 64, 64, 0, 0, 8, false, 100);
 			anima.setDeslocY(30);
-			((Cenario)getCenaAtual()).adicionarAnimacao(anima, NivelCena.frente);		
+			((Cenario) getCenaAtual()).adicionarAnimacao(anima, NivelCena.frente);
 		} catch (Exception e) {
 			tratarExcecao(e);
 			e.printStackTrace();
 		}
-	}	
+	}
 	
 	/**
 	 * Apresenta um balao de fala.
+	 * 
 	 * @param nomeImagem
 	 * @param comportamento
 	 * @param arquivoTexto
 	 * @param chave
 	 * @throws Exception
 	 */
-	public void falar(String nomeImagem, String comportamento, String arquivoTexto, 
-			String chave, float x, float y, float margemx, float margemy) throws Exception {
+	public void falar(String nomeImagem, String comportamento, String arquivoTexto, String chave,
+			float x, float y, float margemx, float margemy) throws Exception {
 		
-		BalaoTexto balao = RecursosFactory.getInstancia().getBalaoTexto(nomeImagem, 
-				comportamento, arquivoTexto, chave);
+		BalaoTexto balao = RecursosFactory.getInstancia().getBalaoTexto(nomeImagem, comportamento,
+				arquivoTexto, chave);
 		
-		((CaixaImagem)balao.getCaixa()).setMargemHorizontal(margemx);
-		((CaixaImagem)balao.getCaixa()).setMargemVertical(margemy);
+		((CaixaImagem) balao.getCaixa()).setMargemHorizontal(margemx);
+		((CaixaImagem) balao.getCaixa()).setMargemVertical(margemy);
 		
 		balao.setMaximoIntervalo(getMaximoIntervaloTexto());
 		balao.setX(x);
 		balao.setY(y);
 		
-		if(fonteFalas == null) {
+		if (fonteFalas == null) {
 			setFontFalas("toupetyFonte18");
 		}
 		
 		balao.setFonte(fonteFalas);
-		((Cenario)getCenaAtual()).adicionarComponente(balao);
+		((Cenario) getCenaAtual()).adicionarComponente(balao);
 	}
 	
-	public void setFontFalas(String nomeFonte) throws SlickException {		
+	public void setFontFalas(String nomeFonte) throws SlickException {
 		fonteFalas = RecursosFactory.getInstancia().getFonte(nomeFonte);
 	}
 	
-	/*USADO NO DEBUG*/
-	private boolean exibirLogEstadoJogavel= false;
+	/* USADO NO DEBUG */
+	private boolean exibirLogEstadoJogavel = false;
 	
 	private void exibirLogEstadoJogavel() {
 		exibirLogEstadoJogavel = true;
@@ -905,26 +897,27 @@ public class Motor extends BasicGame {
 		g.fillRect(200, 200, 400, 200);
 		g.setColor(Color.white);
 		g.drawString("JOGAVEL: " + jogavelCarregado.getNome(), 230, 230);
-		g.drawString("ANIMACAO: " + ((Ator)(jogavelCarregado.getAtor())).getNomeAnimacao(), 230, 260);
+		g.drawString("ANIMACAO: " + ((Ator) (jogavelCarregado.getAtor())).getNomeAnimacao(), 230,
+				260);
 		
 		String estado = "nop";
-		Ator ator = (Ator)(jogavelCarregado.getAtor());
+		Ator ator = (Ator) (jogavelCarregado.getAtor());
 		
-		if(ator.isAndando())
-			estado = "isAndando ";		
-		if(ator.isCaindo())
-			estado = "isCaindo ";				
-		if(ator.isEscorregando())
+		if (ator.isAndando())
+			estado = "isAndando ";
+		if (ator.isCaindo())
+			estado = "isCaindo ";
+		if (ator.isEscorregando())
 			estado = "isEscorregando ";
-		if(ator.isNoar())
+		if (ator.isNoar())
 			estado = "isNoar ";
-		if(ator.isParado())
+		if (ator.isParado())
 			estado = "isParado ";
-		if(ator.isPulando())
+		if (ator.isPulando())
 			estado = "isPulando ";
-		if(ator.isQuicando())
+		if (ator.isQuicando())
 			estado = "isQuicando ";
-		if(ator.isVoando())
+		if (ator.isVoando())
 			estado = "isVoando ";
 		
 		g.drawString("ESTADO: " + estado, 230, 290);
@@ -932,18 +925,19 @@ public class Motor extends BasicGame {
 		g.drawString("VY: " + ator.getVelocidadeY(), 230, 340);
 		g.drawString("atrito: " + ator.getCorpo().getFriction(), 230, 370);
 	}
-	/*USADO NO DEBUG*/
 	
+	/* USADO NO DEBUG */
+
 	public long getTempoMiliSegundos() {
 		return System.currentTimeMillis();
 	}
 	
-	//controle da posição de Toupety na entrada de cenas
+	// controle da posição de Toupety na entrada de cenas
 	private Entrada entrada = null;
 	
 	public Entrada popEntrada() {
 		Entrada tmp = entrada;
-		entrada = null; 
+		entrada = null;
 		return tmp;
 	}
 	
@@ -961,6 +955,7 @@ public class Motor extends BasicGame {
 	
 	/**
 	 * Retorna a instancia do controle dos perifericos de entrada.
+	 * 
 	 * @return
 	 */
 	public EntradaPerifericos getControlePerifericos() {

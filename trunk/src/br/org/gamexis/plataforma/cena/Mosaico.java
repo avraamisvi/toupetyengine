@@ -1,6 +1,5 @@
 package br.org.gamexis.plataforma.cena;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.newdawn.slick.Color;

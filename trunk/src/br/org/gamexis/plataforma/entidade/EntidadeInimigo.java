@@ -1,13 +1,11 @@
 package br.org.gamexis.plataforma.entidade;
 
-import net.phys2d.math.Vector2f;
 import br.org.gamexis.plataforma.Motor;
 import br.org.gamexis.plataforma.cena.Ator;
 import br.org.gamexis.plataforma.cena.Colisivel;
 import br.org.gamexis.plataforma.cena.Efeito;
 import br.org.gamexis.plataforma.eventos.Evento;
 import br.org.gamexis.plataforma.exception.GXException;
-import br.org.gamexis.plataforma.motor.RecursosFactory;
 
 public class EntidadeInimigo extends EntidadeAnimada {
 	int energiaVital = 120;

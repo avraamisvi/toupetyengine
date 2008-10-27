@@ -1,6 +1,5 @@
 package br.org.gamexis.plataforma.cena.evento;
 
-import org.lwjgl.Sys;
 
 public class TemporizadorListerner implements Listerner {
 

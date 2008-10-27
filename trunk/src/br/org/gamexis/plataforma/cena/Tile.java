@@ -1,7 +1,6 @@
 package br.org.gamexis.plataforma.cena;
 
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SpriteSheet;
 
 public class Tile {
 	private String nome;

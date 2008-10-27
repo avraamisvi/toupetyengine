@@ -7,7 +7,6 @@ import br.org.gamexis.plataforma.eventos.EventoAtualizar;
 import br.org.gamexis.plataforma.eventos.EventoColisao;
 import br.org.gamexis.plataforma.exception.GXException;
 import br.org.gamexis.plataforma.script.ScriptComportamento;
-import br.org.gamexis.plataforma.script.ScriptComportamentoGroovy;
 
 public abstract class Entidade {
 

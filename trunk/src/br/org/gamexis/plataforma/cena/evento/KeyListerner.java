@@ -1,8 +1,5 @@
 package br.org.gamexis.plataforma.cena.evento;
 
-import org.newdawn.slick.Input;
-
-import br.org.gamexis.plataforma.Motor;
 import br.org.gamexis.plataforma.motor.EntradaPerifericos;
 
 /**

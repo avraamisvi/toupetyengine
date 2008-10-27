@@ -13,7 +13,6 @@ import net.phys2d.raw.CollisionEvent;
 import net.phys2d.raw.CollisionListener;
 import net.phys2d.raw.Joint;
 import net.phys2d.raw.World;
-import net.phys2d.raw.strategies.QuadSpaceStrategy;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -33,8 +32,6 @@ import br.org.gamexis.plataforma.entidade.EntidadeJogavel;
 import br.org.gamexis.plataforma.entidade.TipoEntidade;
 import br.org.gamexis.plataforma.eventos.EventoColisao;
 import br.org.gamexis.plataforma.exception.GXException;
-import br.org.gamexis.plataforma.motor.RecursosFactory;
-import br.org.gamexis.plataforma.script.ScriptComportamentoGroovy;
 
 /**
  * Represento um Cenário.

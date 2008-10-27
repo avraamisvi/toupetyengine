@@ -10,7 +10,6 @@ import org.newdawn.slick.gui.GUIContext;
 import br.org.gamexis.plataforma.Motor;
 import br.org.gamexis.plataforma.cena.componentes.util.Caixa;
 import br.org.gamexis.plataforma.cena.componentes.util.CaixaShape;
-import br.org.gamexis.plataforma.script.ScriptException;
 
 public class BalaoTexto extends ToupetyComponente {
 
