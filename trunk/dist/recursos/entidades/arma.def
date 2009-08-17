@@ -1,0 +1,62 @@
+<entidade nome="EV" tipo="ARMA" comportamento="arma.groovy">
+<ator nome="arma" animacao="voando_direita" orientacao="direita"/>
+<projetil nome="esfera" poder="20"/>
+
+<carregamento maximo="3" tempoAcumular="600">
+
+<animacaobrilho base="brilho.png" quadros="4" duracao="50" comprimento="32" altura="32"/>
+
+<nivel>
+<efeito base="carregandoArma.png" quadros="2" coluna="0" linha="2" velocidade="30" altura="32" comprimento="32" repetir="SIM"/>
+<projetil nome="esfera" poder="30"/>
+</nivel>
+
+<nivel>
+<efeito base="carregandoArma.png" quadros="2" coluna="0" linha="1" velocidade="30" altura="32" comprimento="32" repetir="SIM"/>
+<projetil nome="esfera" poder="50"/>
+</nivel>
+
+<nivel>
+<efeito base="carregandoArma.png" quadros="3" coluna="0" linha="0" velocidade="60" altura="32" comprimento="32" repetir="SIM"/>
+<projetil nome="verde_grande" poder="60"/>
+</nivel>
+
+</carregamento>
+		
+<direitaAcima>
+	<brilho deslocX="4" deslocY="32"/>
+	<tiro deslocX="40" deslocY="-28"/>
+	<carregando deslocX="0" deslocY="16"/>
+</direitaAcima>
+
+<direitaAbaixo>
+	<brilho deslocX="0" deslocY="4"/>
+	<tiro deslocX="40" deslocY="28"/>
+	<carregando deslocX="0" deslocY="16"/>
+</direitaAbaixo>
+
+<direita>
+	<brilho deslocX="0" deslocY="16"/>
+	<tiro deslocX="40" deslocY="0"/>
+	<carregando deslocX="0" deslocY="16"/>
+</direita>
+
+<esquerda>
+	<brilho deslocX="28" deslocY="16"/>
+	<tiro deslocX="-40" deslocY="0"/>
+	<carregando deslocX="32" deslocY="16"/>
+</esquerda>
+
+<esquerdaAcima>
+	<brilho deslocX="28" deslocY="32"/>
+	<tiro deslocX="-40" deslocY="-28"/>
+	<carregando deslocX="0" deslocY="16"/>
+</esquerdaAcima>
+
+<esquerdaAbaixo>
+	<brilho deslocX="28" deslocY="4"/>
+	<tiro deslocX="-40" deslocY="28"/>
+	<carregando deslocX="0" deslocY="16"/>
+</esquerdaAbaixo>
+		
+</entidade>

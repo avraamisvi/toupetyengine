@@ -1,0 +1,72 @@
+<ator nome="toupety">
+<corpo peso="100.0" atrito="0.6" gravidade="SIM">
+<caixa comprimento="52.0" altura="52.0"/>
+</corpo>
+
+<animacoes base="TOUP.png" comprimento="120" altura="120" deslocx="60" deslocy="88">
+
+<animacao nome="parado" quadros="1" repetir="SIM">		
+<direita linha="0" coluna="0" />
+<esquerda linha="7" coluna="0" />
+</animacao>
+
+<animacao nome="andando" quadros="6" repetir="SIM">		
+<direita linha="0" coluna="0"/>
+<esquerda linha="7" coluna="0"/>
+</animacao>
+
+<animacao nome="caindo" quadros="2" repetir="SIM">		
+<direita linha="1" coluna="3"/>
+<esquerda linha="8" coluna="3"/>
+</animacao>
+
+<animacao nome="quicando" quadros="3" repetir="NAO">		
+<direita linha="1" coluna="5"/>
+<esquerda linha="8" coluna="5"/>
+</animacao>
+
+<animacao nome="girando" quadros="6" repetir="SIM">		
+<direita linha="2" coluna="0"/>
+<esquerda linha="9" coluna="0"/>
+</animacao>
+
+<animacao nome="pulando" quadros="1" repetir="NAO">		
+<direita linha="1" coluna="1"/>
+<esquerda linha="8" coluna="1"/>
+</animacao>
+
+<animacao nome="subindo" quadros="1" repetir="SIM">		
+<direita linha="1" coluna="2"/>
+<esquerda linha="8" coluna="2"/>
+</animacao>
+
+<animacao nome="correndo" quadros="4" repetir="SIM">		
+<direita linha="3" coluna="0"/>
+<esquerda linha="10" coluna="0"/>
+</animacao>
+
+<animacao nome="morrendo" quadros="1" repetir="SIM">		
+<direita linha="4" coluna="0"/>
+<esquerda linha="11" coluna="0"/>
+</animacao>
+
+<animacao nome="dano" quadros="2" repetir="NAO">		
+<direita linha="4" coluna="1"/>
+<esquerda linha="11" coluna="1"/>
+</animacao>
+
+<particulas nome="teleporte" tempo="600" repetir="NAO">		
+<direita emissor="teleporte" ex="-20" ey="20"/>
+<esquerda emissor="teleporte" ex="20" ey="20"/>
+<acima emissor="teleporte" ex="-20" ey="20"/>
+<abaixo emissor="teleporte" ex="20" ey="20"/>
+</particulas>
+
+<mista nome="voando" quadros="2" repetir="SIM">		
+<direita linha="15" coluna="0" emissor="foguete" ex="-20" ey="20"/>
+<esquerda linha="14" coluna="0" emissor="foguete" ex="20" ey="20"/>
+</mista>
+
+</animacoes>
+
+</ator>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<cenario altura="30000" comprimento="30000" nome="deserto" comportamento="fase.groovy" painelEstado="ToupetyPainelEstado">
+<jogavel nome="toupety" x="350.0" y="-50.0"/>
+
+<mosaico definicao="plataformaGrama" nome="plataformaGrama" nivel="meio" x="340" y="20"/>
+<plataforma comportamento="" identificador="Objeto22" x="340" y="120" atrito="0">
+<!--caixa altura="105.0" comprimento="450"/-->
+<poligono pontos="6">
+<ponto x="0.0" y="5.0"/>
+<ponto x="270.0" y="5.0"/>
+<ponto x="270.0" y="-85.0"/>
+<ponto x="450.0" y="-85.0"/>
+<ponto x="450.0" y="170.0"/>
+<ponto x="0.0" y="170.0"/>
+</poligono>
+</plataforma>
+
+<!-- acao x="100" y="40" comprimento="200" altura="100" tipo="nocivo" dano="2" iteracoes="10"/-->
+
+<!-- acao x="475" y="40" comprimento="200" altura="100" tipo="teleporte" >
+<direita x="840" y="30" habilitado="SIM"/>
+<esquerda x="840" y="30" habilitado="NAO"/>
+<baixo x="840" y="30" habilitado="NAO"/>
+<acima x="840" y="30" habilitado="NAO"/>
+</acao -->
+
+<!-- acao x="700" y="40" comprimento="200" altura="100" tipo="teleporte">
+<direita x="840" y="30" habilitado="NAO"/>
+<esquerda x="510" y="30" habilitado="SIM"/>
+<abaixo x="840" y="30" habilitado="NAO"/>
+<acima x="840" y="30" habilitado="NAO"/>
+</acao -->
+
+<!-- acao x="475" y="0" comprimento="200" altura="100" tipo="personalizado" comportamento="teste.groovy"/-->
+				
+<imagem x="700" y="-70" nivel="fundo" referencia="arvore.png"/>
+<animacao nome="anim1" base="borboleta.png" comprimento="32" altura="32" quadros="4" nivel="meio" x="490.0" y="0.0"/>
+
+<entidade comportamento="inimigo.groovy" definicao="inimigo" identificador="ToupInimigo" nivel="meio" x="575.0" y="0.0"/>
+<entidade comportamento="borboleta.groovy" definicao="borboleta" identificador="borboleta" nivel="meio" excluidos="todos" x="475.0" y="-10.0"/>
+<entidade comportamento="borboleta.groovy" definicao="borboleta" identificador="borboleta2" nivel="meio" excluidos="todos" x="490.0" y="-10.0"/>
+
+<entidade comportamento="propulsor.groovy" definicao="propulsor" identificador="propulsor" nivel="meio" excluidos="fundo,frente,meio,plataforma" x="700.0" y="-100.0"/>
+<!-- fundo,frente,meio,animados,plataforma -->
+
+<!--emissor referencia="nevando" x="150" y="-400" nivel="fixosFrente"/-->
+<!--emissor referencia="nevando" x="550" y="-400" nivel="fixosFrente"/-->
+<mosaico definicao="fundo" nome="fundoMosaico" nivel="fixosFundo" x="0" y="300"/>
+
+</cenario>

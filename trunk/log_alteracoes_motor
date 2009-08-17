@@ -1,0 +1,225 @@
+Versao 1.0.0.BETA
+Revisoes:
+#0.10.24b - introduzido tag para carregamento de recursos entre-niveis, no load de cenario, 
+<CARREGAR tipo="multImagem" referencia="...">
+<CARREGAR tipo="imagem" referencia="...">
+
+#0.10.25b - introduzido classe DebugMestre pra mecanismo de testes
+usada no console como:> debug.<metodo>
+
+#0.10.28b - correção bug arma virada inverso a posição do jogador
+#0.10.29b - correção bug tiro acumulado incompleto
+
+#0.10.40 - abandonado metodo de verificão automatico baseado no tamanho da cena, o novo metodo de limites da camera usa 4 entradas, 
+que são y,x maximos e minimos, quando a camera atinge esses valores ela n evolui. Isso facilitou em muito a confecção de novas cenas.
+
+#1.1.1
+1 - Inclusão da possibilidade de não emitir sons.
+
+#1.1.2
+1 - alteração dos nomes dos objetos globais no console, para se adequarem ao ja usado nos scripts
+
+#1.1.3
+1 - Inclusão de modo acumulador ao se ativar o modo de depuração
+
+#1.1.4
+1 - Correção, projetil estava sendo gerado sem nome, durante a clonagem
+
+#1.2.0
+1 - inclusao metodo em entidade jogavel para editar a quantidade maxima de combustivel do foguete
+
+#1.2.1
+1 - Correção no carregador de mosaicos animados, que não estava carregando mosaicos que n possuem multi imagem definida
+
+#1.3.0
+1 - Adição de método para configurar o deslocamento de X e Y num efeito emissor. setDeslocX(float) e setDeslocY(float)
+
+#1.5.0
+1 - Adição de método para incrementar o maximo de munição
+
+#1.5.1
+1 - Correção de nullpointer ao chamar parar musica.
+2 - Correção de nullpointer ao chamar verificar musica esta tocando.
+
+#1.5.2
+1- Ajuste para existir 2 tipos de pauses o interno usado para eventos especiais no jogo e o pause manual acionado pelo jogador
+
+#1.5.3
+1- Correção de loop infinito gerado pela funcionalidade inserida na versão anterior
+
+#1.5.4
+1- ajuste para que as animações não sejam atualizadas durante a pausa
+
+#1.6.0 
+1- Novo metodo em ator para permitir a configuração para rotavel ou nao. ( setRotavel )
+
+#1.6.1
+1- Ajuste do metodo setExclusion key em superCorpo
+
+#1.7.0
+1- Inclusão de metodo para associar uma entidade a um ID(String), isso foi feito mediante a necessidade de eliminar 
+a duplicação de scripts de comportamento para entidades que possuiam o comportamento de não aparecer numa cena mediante
+uma variavel associada com o nome e referencia, dando a ideia de unico, como no caso de items especiais.
+
+#1.7.1
+1- Ajuste, jogavel tem id = "JOGAVEL"
+
+#1.7.2
+1- Foi criado um trecho de codigo para tratar o Bug de escorregar infinitamente.
+
+#1.8.0
+1- Criação de metodo para acessar municao de uma arma estocada habilitada.
+
+#1.9.0
+1- Criação de log do estado interno do jogavel, teclando F8
+
+#1.9.1
+1- Metodo da fabrica para inserir entidade agora pode receber velocidade
+
+#1.9.2
+1- Correção do BUG de cena estatica, ao iniciar, que nao iniciava o console pois o jogavel era nulo.
+2 - ajuste para n precisar mais inserir o caminho todo do script de comportamento
+
+
+#1.9.3
+1 - Ajuste para exibir o atrito no debug do jogavel.
+
+#1.10.0
+1 - Inclusão de tag para controle de cor de fundo.
+2 - Inclusão de tag para controle de saida e entrada de cenas, no caso a tag indica a posicão de entrada do jogavel na cena a qual esta interligada.
+3 - acrescimo de atributos na tag de camera para indicar os limites dela na cena.
+OBS: alterações criadas a fim de diminuir o numero de scripts, e eliminar os scripts de transição de cenas.
+
+#1.10.1
+1 - Correção de erro em que a animação do inimigo reiniciava constantemente, dando a impressão de que estava travado.
+( para isso troquei a chamada em EntidadeAnimada do metodo ator->configureAnimacao("ANIMA") por ator->configureAnimacao("ANIMA", true) )
+
+#1.10.2
+1 - Metodo configureAnimacao da EntidadeJogavel transferido(o anterior esta como deprecated) para EntidadeAnimada como configureAnimacaoPorNome
+
+#1.10.3
+1 - Inclusão de controle de scripts com erro de codigo, para que os mesmos não executem continuamente dando erro. Se tem erro não executa.
+
+#1.10.4
+1 - Correção de null pointer em projetil, quando arma era nula.
+
+#1.10.5
+1 - Correção de erro em sofreDano de Entidadeinimigo que estava subtraindo errado.
+
+#1.10.6
+1 - Ajuste para projetil não descontar valor automaticamente de inimigo. Assim o pode ser definido diferentes comportamentos pra inimigos
+
+#1.11.0
+1 - Nova funcionalidade pra animações, a velocidade da animação do ator é configuravel, atributo duracao na tag animacao.
+
+#1.12.0
+1 - Nova funcionalidade metodo finalize agora obrigatorio para entidades.
+2 - implementação de correções no gerenciamento de memoria.
+
+#1.13.0
+1 - Novo metodo na Fabrica, getEventoColisao
+
+#1.14.0
+1 - Agora é possivel configurar entidades que possuam comportamento semelhantes porem com pequenas diferenças usando o mesmo script,
+neste caso configura-se estas diferenças atravez de parametros coma tag <PARAMETRO tipo="" nome="" valor=""> dentro da tag <ENTIDADE ...>
+OBS: alterações criadas a fim de diminuir o numero de scripts com mesmo codigo e tambem diminuir o delay de inserção de 
+multiplos objetos, pois mutiplos objetos inseridos criam uma pequena pausa na engine, devido a necessidade de compilação dos scripts
+(ainda não achei maneira eficaz de reduzir isso).
+
+#1.15.0
+1 - Solucionado, problema da impossibilidade de uso de um mesmo script compilado para diversas entidades, alterando apenas o escopo
+ou seja cada entidade possuira um escopo proprio executando sobre o script, mas para essa alteração tive que mudar de linguagem e tambem 
+deixar de usar a "arquitetura" padrao de java para scripting, ou seja existe uma enorme deficiencia nessa arquitetura que impedia um bom 
+funcionamento do motor.
+2 - Nova linguagem adicionada, JavaScript(Rhino)
+3 - Nova propriedade adicionada para o arquivo de inicialização do Motor, tag <CARREGAR referencia="" tipo="">
+
+#1.16.0
+1 - Inserido a funcionalidade de carregar grandes imagens.
+
+#1.17.0
+1 - Inserido a funcionalidade de carregar grandes imagens para imagens compostas.
+
+#1.17.1
+1 - Inserido uma alternativa para o metodo sofrerDano de entidade inimigo, em que pode-se especificar o deslocamento do dano padrão
+para os casos de inimigos grandes que podem ocultar sem intenção a exibição do dano.
+2 - Inserido metodo falar no motor, para facilitar a construção de cenas que exibem baloes de fala e tirar parte do esforço de programação
+do script.
+3 - Inserido metodo para verificar se uma animação é a atual apenas pelo nome inicial sem a extenção de direita esquerda etc
+
+#1.17.2
+1 - Ajustes nas barras de estado(inclusão de texto exibindo quantidade maxima e disponivel), e mostrador de arma selecionada.
+
+#1.17.3
+1 - Ajustes para que os saves se adequem a nova realidade do modo de entrada em uma cena, definindo ao carregar uma instancia de entrada, com o metodo
+putEntrada do motor
+
+#1.18.0
+1 - Inserido possibilidade de configurar a velocidade maxima de um corpo.
+
+#1.19.0
+1 - Inserido possibilidade de se trabalhar com caixas de colisão por entidade.
+
+#1.20.1
+1 - Correção de erro em javascript para carregar os imports quando não carregado do arquivo de inicialização.
+
+#2.0.0
+1 - Nova funcinalidade e mudança de paradigma, agora o carregamento do jogo pode ser feito a partir de um arquivo, de dados.
+2 - FileSystem parametrizado, por meio do parametro de linha FS <ClasseFileSystem> é possivel definir a classe que sera responsavel pela 
+leitura dos dados.
+3 - Inclusao de metodos em CenaEstatica para incluir listerners.
+
+#2.1.0
+1 - Criação do metodo popValorVariavel
+
+#2.2.0
+1 - Criado metodos para incluir variaveis nos listerners, e permitindo que um comando acessasse esses dados.
+
+#2.3.0
+1 - Criado o AtorProxy, que visa diminuir o loading de um ator, nesse caso suas animações são carregadas em tempo de execução.
+
+#2.4.0
+1 - Criado efeito de fadeIn.
+2 - Criado efeito de fadeOut.
+1 - Criado metodo na fabica para efeito de fadeIn.
+2 - Criado metodo na fabica para efeito de fadeOut.
+
+#2.4.1
+1 - Ajustes nos mosaicos para evitar que a conexao entre as celulas se mostrem ao movimentar da camera.
+
+#2.5.0
+1 - Adicionado metodo que ajusta a velocidade da anima�ao.
+
+#2.6.0
+1 - Componentes animados podem ser identificados numa cena.
+2 - Animados podem ser recuperados de uma cena a partir do identificador.
+
+#2.7.0
+1 - Altera��es para efeitos de som e musica.
+
+#2.7.1
+1 - Corre��es nos problemas de som.
+
+#2.7.2
+1 - Otimização, melhoria na performance.
+
+#2.7.3
+1 - Correções dos problemas vinculados a memory leak.
+2 - Melhoria da performance, otimizações, novo fade de transição.
+
+#2.7.4
+1 - Correções dos problemas vinculados a memory leak.
+2 - Melhoria no processo de gerenciamento de memoria atraves de exclusao por custo.
+
+#2.8.0
+1 - Ajustes e inclusao da possibilidade de achar um desenho no jogo pelo identificador.
+
+#2.8.1
+1 - Ajustes correcao do retorno do controle a toupety qndo uma fala esta rolando ou dialogo esta aparecendo.
+
+#2.9.0
+1 - implemetacao de possibilidade para giro de imagens
+2 - implementacao de caixas de "colisao nao fisicas" para iteratividade entre os atores.
+3 - inclusao do fundo com paralaxe scrolling, criação de material paralaxer.
+
+

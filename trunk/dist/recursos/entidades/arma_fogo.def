@@ -1,0 +1,35 @@
+<entidade nome="EV_FOGO" tipo="ARMA">
+<ator nome="arma_fogo" animacao="disparando_direita" orientacao="direita"/>
+<projetil nome="projetil_fogo" poder="20"/>
+		
+<direitaAcima>
+	<brilho deslocX="4" deslocY="32"/>
+	<tiro deslocX="0" deslocY="-28"/>
+</direitaAcima>
+
+<direitaAbaixo>
+	<brilho deslocX="0" deslocY="4"/>
+	<tiro deslocX="0" deslocY="28"/>
+</direitaAbaixo>
+
+<direita>
+	<brilho deslocX="0" deslocY="16"/>
+	<tiro deslocX="40" deslocY="0"/>
+</direita>
+
+<esquerda>
+	<brilho deslocX="28" deslocY="16"/>
+	<tiro deslocX="-40" deslocY="0"/>
+</esquerda>
+
+<esquerdaAcima>
+	<brilho deslocX="28" deslocY="32"/>
+	<tiro deslocX="0" deslocY="-28"/>
+</esquerdaAcima>
+
+<esquerdaAbaixo>
+	<brilho deslocX="28" deslocY="4"/>
+	<tiro deslocX="0" deslocY="28"/>
+</esquerdaAbaixo>
+		
+</entidade>

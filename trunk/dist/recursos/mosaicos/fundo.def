@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<mosaico base="fundo.png" comprimentoCelulas="400" alturaCelulas="300" linhas="1"  colunas="2">
+<celula linhaDestino="0" colunaDestino="0" parteLinha="0" parteColuna="0" visivel="SIM"/>
+<celula linhaDestino="0" colunaDestino="1" parteLinha="0" parteColuna="0" visivel="SIM"/>
+</mosaico>

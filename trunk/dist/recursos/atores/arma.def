@@ -1,0 +1,25 @@
+<ator nome="arma">
+<corpo peso="100.0" atrito=".8" gravidade="NAO">
+<caixa comprimento="32.0" altura="32.0" />
+</corpo>
+
+<animacoes base="armas.png" comprimento="32" altura="32" deslocx="16" deslocy="16">
+
+<animacao nome="parado" quadros="1" repetir="SIM">
+<direita linha="0" coluna="0" />
+<esquerda linha="0" coluna="1" />
+</animacao>
+
+<animacao nome="acima" quadros="1" repetir="SIM">
+<direita linha="1" coluna="0" />
+<esquerda linha="1" coluna="1" />
+</animacao>
+
+<animacao nome="abaixo" quadros="1" repetir="SIM">
+<direita linha="2" coluna="0" />
+<esquerda linha="2" coluna="1" />
+</animacao>
+
+</animacoes>
+
+</ator>

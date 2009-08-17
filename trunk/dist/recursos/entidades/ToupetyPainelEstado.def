@@ -1,0 +1,10 @@
+<PainelEstado x="0" y="0">
+<molduraArma fundo="bordaArma.png" />
+<barra nome="energia" contorno="contorno.png" unidade="unidade.png" dx="55" dy="20" maximo="200"/>
+<barra nome="combustivel" contorno="contorno.png" unidade="unidadeCombustivel.png" dx="55" dy="35" maximo="3000"/>
+<barra nome="escudo" contorno="contorno.png" unidade="unidadeEscudo.png" dx="55" dy="50" maximo="3000" />
+<arma nome="EV" icone="armaIcone.png" municao="INFINITO" dx="40" dy="25" selecionada="SIM"/>
+<arma nome="EV_FOGO" icone="arma_fogo_ico.png" municao="INFINITO" dx="40" dy="25" selecionada="NAO"/>
+<arma nome="EV_GELO" icone="arma_gelo_ico.png" municao="INFINITO" dx="40" dy="25" selecionada="NAO"/>
+<arma nome="BAZUCA" icone="arma_gelo_ico.png" municao="30" dx="40" dy="25" selecionada="NAO"/>	
+</PainelEstado>

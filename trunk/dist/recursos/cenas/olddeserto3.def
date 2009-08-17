@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<cenario altura="30000" comprimento="30000" nome="deserto" painelEstado="ToupetyPainelEstado">
+<jogavel nome="toupety" x="140.0" y="-50.0"/>
+
+<mosaico definicao="plataformaGrama" nome="plataformaGrama" nivel="2" x="340" y="20"/>
+<plataforma comportamento="" identificador="Objeto22" x="425.5" y="85" atrito="1">
+<caixa altura="105.0" comprimento="151.0"/>
+</plataforma>
+
+<imagem nivel="1" referencia="testePLat1.png" x="335.0" y="454.0"/>
+<imagem nivel="1" referencia="testePLat2.png" x="776.0" y="215.0"/>
+<plataforma comportamento="" identificador="Objeto4" x="616.0" y="174.0" atrito="1.0">
+<poligono pontos="13">
+<ponto x="0.0" y="0.0"/>
+<ponto x="210.0" y="-10.0"/>
+<ponto x="322.0" y="-3.0"/>
+<ponto x="326.0" y="13.0"/>
+<ponto x="318.0" y="18.0"/>
+<ponto x="297.0" y="14.0"/>
+<ponto x="251.0" y="75.0"/>
+<ponto x="157.0" y="92.0"/>
+<ponto x="113.0" y="30.0"/>
+<ponto x="74.0" y="42.0"/>
+<ponto x="29.0" y="91.0"/>
+<ponto x="10.0" y="37.0"/>
+<ponto x="-5.0" y="18.0"/>
+</poligono>
+</plataforma>
+<plataforma comportamento="" identificador="Objeto18" x="129.0" y="246.0" atrito="1.0">
+<poligono pontos="21">
+<ponto x="0.0" y="0.0"/>
+<ponto x="15.0" y="-14.0"/>
+<ponto x="394.0" y="-12.0"/>
+<ponto x="408.0" y="-5.0"/>
+<ponto x="389.0" y="22.0"/>
+<ponto x="375.0" y="66.0"/>
+<ponto x="398.0" y="70.0"/>
+<ponto x="385.0" y="122.0"/>
+<ponto x="400.0" y="137.0"/>
+<ponto x="374.0" y="187.0"/>
+<ponto x="311.0" y="180.0"/>
+<ponto x="323.0" y="207.0"/>
+<ponto x="294.0" y="251.0"/>
+<ponto x="236.0" y="248.0"/>
+<ponto x="230.0" y="309.0"/>
+<ponto x="182.0" y="304.0"/>
+<ponto x="151.0" y="370.0"/>
+<ponto x="92.0" y="368.0"/>
+<ponto x="84.0" y="430.0"/>
+<ponto x="20.0" y="425.0"/>
+<ponto x="20.0" y="18.0"/>
+</poligono>
+</plataforma>
+<imagem nivel="1" referencia="cacto1.png" x="437.0" y="146.0"/>
+
+<acao x="100" y="40" comprimento="200" altura="100" tipo="nocivo" dano="2" iteracoes="10">
+<direita x="840" y="30" habilitado="SIM"/>
+<esquerda x="840" y="30" habilitado="NAO"/>
+<baixo x="840" y="30" habilitado="NAO"/>
+<acima x="840" y="30" habilitado="NAO"/>
+</acao>
+
+<acao x="475" y="40" comprimento="200" altura="100" tipo="teleporte" >
+<direita x="840" y="30" habilitado="SIM"/>
+<esquerda x="840" y="30" habilitado="NAO"/>
+<baixo x="840" y="30" habilitado="NAO"/>
+<acima x="840" y="30" habilitado="NAO"/>
+</acao>
+
+<acao x="700" y="40" comprimento="200" altura="100" tipo="teleporte">
+<direita x="840" y="30" habilitado="NAO"/>
+<esquerda x="510" y="30" habilitado="SIM"/>
+<abaixo x="840" y="30" habilitado="NAO"/>
+<acima x="840" y="30" habilitado="NAO"/>
+</acao>
+
+
+</cenario>
