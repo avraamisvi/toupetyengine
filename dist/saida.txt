@@ -1,0 +1,7 @@
+Thu Jan 31 02:08:39 BRT 2008 INFO:Slick Build #177
+Thu Jan 31 02:08:39 BRT 2008 INFO:LWJGL Version: 1.1.2
+Thu Jan 31 02:08:39 BRT 2008 INFO:OriginalDisplayMode: 1280 x 1024 x 24 @50Hz
+Thu Jan 31 02:08:39 BRT 2008 INFO:TargetDisplayMode: 640 x 480 x 0 @0Hz
+Thu Jan 31 02:08:39 BRT 2008 INFO:Starting display 640x480
+Thu Jan 31 02:08:39 BRT 2008 INFO:Controllers not available
+Thu Jan 31 02:08:40 BRT 2008 INFO:Starting display 800x600

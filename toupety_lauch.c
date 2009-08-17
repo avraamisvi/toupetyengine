@@ -4,7 +4,7 @@
 #include "unistd.h"
 
 int main (int argc, char *argv[]) {
-	char *spawn_args[6] = {NULL};
+	char *spawn_args[8] = {NULL};
 	char dir[600];
 	char jar[1000];
 	char lib[1000];
@@ -24,7 +24,10 @@ int main (int argc, char *argv[]) {
 	strcat (jar, dir);
 	strcat (jar, "/toupety_engine.jar");
 	strcat (jar, "\"");
+
 	spawn_args[5] = jar;
+	spawn_args[6] = " FS";
+	spawn_args[7] = " \"br.com.gamexis.FileSystem.GameXisFileSystem\"";
 	
 
 	strcpy (lib, "-Djava.library.path=\"");
@@ -39,7 +42,10 @@ int main (int argc, char *argv[]) {
 	strcat(cmd, lib);
 	strcat(cmd, " -jar ");
 	strcat( cmd, jar);
-	//system("java -Xms512m -Xmx800m -Djava.library.path=\".\" -jar \"toupety_engine.jar\"");
+	strcat( cmd, spawn_args[6]);
+	strcat( cmd, spawn_args[7]);
+
+	//system("java -Xms512m -Xmx800m -Djava.library.path=\".\" -jar \"toupety_engine.jar\" FS\"br.org.gamexis.plataforma.motor.filesystem.ToupetyFileSystem\"");
 	system(cmd);
 	
 	return 0;

@@ -3,7 +3,7 @@
 #include <process.h>
 
 int main (int argc, char *argv[]) {
-	char *spawn_args[6] = {NULL};
+	char *spawn_args[8] = {NULL};
 
 
 	//java -Xms512m -Xmx800m -Djava.library.path="." -jar "toupety_engine.jar"
@@ -14,6 +14,8 @@ int main (int argc, char *argv[]) {
 	spawn_args[3] = "-Djava.library.path=\".\"";
 	spawn_args[4] = "-jar";
 	spawn_args[5] = "\"toupety_engine.jar\"";
+	spawn_args[6] = "FS";
+	spawn_args[7] = "br.org.gamexis.plataforma.motor.filesystem.ToupetyFileSystem";
 
 	spawnv(P_WAIT,"java", spawn_args);
 

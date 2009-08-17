@@ -1,0 +1,20 @@
+<ator nome="escudo">
+<corpo peso="100.0" atrito="0.3" gravidade="NAO">
+<caixa comprimento="120.0" altura="120.0" />
+</corpo>
+
+<animacoes base="escudo.png" comprimento="120" altura="120" deslocx="60" deslocy="60">
+
+<animacao nome="ativado" quadros="3" repetir="NAO">
+<direita linha="0" coluna="0" />
+<esquerda linha="0" coluna="0" />
+</animacao>
+
+<animacao nome="desativado" quadros="3" repetir="NAO">
+<direita linha="0" coluna="0" />
+<esquerda linha="0" coluna="0" />
+</animacao>
+
+</animacoes>
+
+</ator>

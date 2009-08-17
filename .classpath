@@ -1,45 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.6.0_06"/>
-	<classpathentry kind="lib" path="lib/hiero.jar"/>
-	<classpathentry kind="lib" path="lib/ibxm.jar"/>
-	<classpathentry kind="lib" path="lib/jinput.jar">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="libs/ibxm.jar"/>
+	<classpathentry kind="lib" path="libs/jinput.jar"/>
+	<classpathentry kind="lib" path="libs/jogg-0.0.7.jar"/>
+	<classpathentry kind="lib" path="libs/lwjgl.jar" sourcepath="libs/src/lwjgl-source-2.1.0.zip">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="ToupetyEngine/libs/slick/lib"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="ToupetyEngine/libs/native"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/jnlp.jar"/>
-	<classpathentry kind="lib" path="lib/jogg-0.0.7.jar"/>
-	<classpathentry kind="lib" path="lib/jorbis-0.0.15.jar"/>
-	<classpathentry kind="lib" path="lib/lwjgl.jar">
-		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="ToupetyEngine/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="lib/pedigree.jar" sourcepath="libs/slick/tools/"/>
-	<classpathentry kind="lib" path="lib/scalar.jar"/>
-	<classpathentry kind="lib" path="lib/slick.jar" sourcepath="libs/slick/src"/>
-	<classpathentry kind="lib" path="lib/slick-examples.jar"/>
-	<classpathentry kind="lib" path="lib/tinylinepp.jar"/>
-	<classpathentry kind="lib" path="lib/resolver.jar"/>
-	<classpathentry kind="lib" path="lib/serializer.jar"/>
-	<classpathentry kind="lib" path="lib/xercesImpl.jar"/>
-	<classpathentry kind="lib" path="lib/xml-apis.jar"/>
-	<classpathentry kind="lib" path="lib/neodatis-odb.jar" sourcepath="libs/neodatis-odb/src/src.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/ToupetyEngine/libs/neodatis-odb/doc/odb-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="lib/NativeFmod.jar" sourcepath="libs/NativeFMOD/NativeFmod Sdk/Src/NativeFmod-Src/Java/NativeFmod-Src.jar">
-		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="ToupetyEngine/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="lib/groovy-all-1.5.2.jar"/>
-	<classpathentry kind="lib" path="lib/jmf.jar"/>
-	<classpathentry kind="lib" path="lib/js.jar" sourcepath="libs/rhino-javascript/src"/>
-	<classpathentry kind="lib" path="lib/phys2d-060907.jar"/>
-	<classpathentry kind="lib" path="lib/groovy-engine.jar"/>
+	<classpathentry kind="lib" path="libs/nifty-0.0.5.jar"/>
+	<classpathentry kind="lib" path="libs/nifty-default-styles-0.0.1.jar"/>
+	<classpathentry kind="lib" path="libs/slick.jar" sourcepath="/Slick2D"/>
+	<classpathentry kind="lib" path="libs/Phys2D.jar"/>
+	<classpathentry kind="lib" path="libs/truezip-6.jar"/>
+	<classpathentry kind="lib" path="libs/groovy-all-1.5.2.jar"/>
+	<classpathentry kind="lib" path="libs/js.jar"/>
+	<classpathentry kind="lib" path="libs/neodatis-odb.jar"/>
+	<classpathentry kind="lib" path="libs/resolver.jar"/>
+	<classpathentry kind="lib" path="libs/serializer.jar"/>
+	<classpathentry kind="lib" path="libs/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="libs/xml-apis.jar"/>
+	<classpathentry kind="lib" path="libs/groovy-engine.jar"/>
+	<classpathentry kind="lib" path="libs/jorbis-0.0.15.jar"/>
+	<classpathentry kind="lib" path="libs/xpp3-1.1.4c.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
