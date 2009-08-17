@@ -1,3 +1,0 @@
-<entidade nome="propulsor" tipo="NEUTRA">
-<ator nome="propulsor" animacao="parado_direita" orientacao="direita"/>
-</entidade>

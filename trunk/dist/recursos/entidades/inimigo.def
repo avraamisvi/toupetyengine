@@ -1,3 +1,0 @@
-<entidade nome="itoupety" tipo="INIMIGO" dano="10">
-<ator nome="toupety" animacao="parado_direita" orientacao="direita"/>
-</entidade>

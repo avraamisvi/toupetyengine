@@ -1,3 +1,0 @@
-<entidade nome="escudo" tipo="ESCUDO">
-<ator nome="escudo" animacao="disparando_direita" orientacao="direita"/>
-</entidade>

@@ -1,8 +1,0 @@
-<entidade nome="toupety" tipo="JOGAVEL" comportamento="toupety.groovy">
-<ator nome="toupety" animacao="parado_direita" orientacao="direita"/>
-<arma nome="arma_bazuca"/>
-<arma nome="arma_fogo"/>
-<arma nome="arma_gelo"/>
-<arma nome="arma"/>
-<escudo nome="escudo"/>
-</entidade>
