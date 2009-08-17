@@ -1,7 +1,0 @@
-<entidade nome="projetil_fogo" tipo="PROJETIL">
-<ator nome="projetil_fogo" animacao="disparando_direita" orientacao="direita"/>
-<velocidade valor="100"/>
-<intervalo valor="3"/>
-<maximo valor="3"/>
-<explosao base="explosao.png" coluna="0" linha="0" quadros="3" comprimento="72" altura="72" repetir="NAO" velocidade="50"/>
-</entidade>

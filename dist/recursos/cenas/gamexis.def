@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
-<cenaestatica nome="gamexis" comportamento="recursos/comportamentos/gamexis.groovy">
-				
-<imagem x="400" y ="250" nivel="1" referencia="gamexis.png" identificador="gamexis"/>
-
-</cenaestatica>
